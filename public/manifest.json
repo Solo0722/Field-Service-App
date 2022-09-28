@@ -2,6 +2,7 @@
   "short_name": "Ministry Assistant",
   "name": "Ministry Assistant",
   "scope": "/",
+  "start_url": "/",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,7 +21,6 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
