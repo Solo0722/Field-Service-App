@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { cookies, months } from "../utils/data";
+import { months } from "../utils/data";
+import { useLocalStorage } from "../utils/hooks";
 
 export const AppContext = createContext();
 
@@ -7,45 +8,22 @@ const GlobalContext = ({ children }) => {
   const date = new Date();
   const year = date.getFullYear();
   const month = months[date.getMonth()];
-  const [publisher, setPublisher] = useState(
-    !cookies.get("publisherName") ? null : cookies.get("publisherName")
-  );
+  const [publisher, setPublisher] = useLocalStorage("publisher", null);
 
-  const [monthlyReport, setMonthlyReport] = useState({
+  const [monthlyReport, setMonthlyReport] = useLocalStorage("monthlyReport", {
     month,
     year,
-    hours: !cookies.get("monthlyReport")
-      ? 0
-      : cookies.get("monthlyReport").hours,
-    placements: !cookies.get("monthlyReport")
-      ? 0
-      : cookies.get("monthlyReport").placements,
-    videos: !cookies.get("monthlyReport")
-      ? 0
-      : cookies.get("monthlyReport").videos,
-    return_visits: !cookies.get("monthlyReport")
-      ? 0
-      : cookies.get("monthlyReport").return_visits,
-    bible_studies: !cookies.get("monthlyReport")
-      ? 0
-      : cookies.get("monthlyReport").bible_studies,
+    hours: 0,
+    placements: 0,
+    videos: 0,
+    return_visits: 0,
+    bible_studies: 0,
   });
 
-  const [reportHistory, setReportHistory] = useState(
-    !cookies.get("reportHistory") ? [] : cookies.get("reportHistory")
+  const [reportHistory, setReportHistory] = useLocalStorage(
+    "reportHistory",
+    []
   );
-
-  useEffect(() => {
-    cookies.set("publisherName", publisher);
-  }, [publisher]);
-
-  useEffect(() => {
-    cookies.set("monthlyReport", monthlyReport);
-  }, [monthlyReport]);
-
-  useEffect(() => {
-    cookies.set("reportHistory", reportHistory);
-  }, [reportHistory]);
 
   const [yearlyReport, setYearlyReport] = useState([
     monthlyReport,
