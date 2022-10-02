@@ -1,47 +1,48 @@
-import { Button } from "antd";
-import React, { useEffect } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import { MoreOutlined } from "@ant-design/icons";
 import MonthlyOverview from "../components/MonthlyOverview";
 import Greetings from "../components/Greetings";
-
-const bible_students = [
-  {
-    name: "Solomon",
-    location: "Kentinkrono",
-    study_publication: "Teach us",
-  },
-  {
-    name: "Solomon",
-    location: "Kentinkrono",
-    study_publication: "Teach us",
-  },
-  {
-    name: "Solomon",
-    location: "Kentinkrono",
-    study_publication: "Teach us",
-  },
-];
+import { AppContext } from "../context/GlobalContext";
 
 const Home = () => {
+  const { bibleStudents, territories } = useContext(AppContext);
+
   return (
     <HomeContainer>
       <Greetings />
       <MonthlyOverview />
       <h2>Bible Students</h2>
-      <StudentsContainer>
-        {bible_students.map((bs) => (
-          <BibleStudentsWrapper>
-            <h3>{bs.name}</h3>
-            <p>{bs.location}</p>
-            <Button
-              type="text"
-              icon={<MoreOutlined />}
-              style={{ position: "absolute", top: "10px", right: "10px" }}
-            />
-          </BibleStudentsWrapper>
-        ))}
-      </StudentsContainer>
+      {bibleStudents == [] || bibleStudents == null || !bibleStudents.length ? (
+        <p>There are no bible students</p>
+      ) : (
+        <StudentsContainer>
+          {bibleStudents.map((bs, i) => (
+            <BibleStudentsWrapper key={i}>
+              <h3>{bs.name}</h3>
+              <p>
+                <span>Status:</span> {bs.status}
+              </p>
+              <p>
+                <span>Location:</span> {bs.location}
+              </p>
+            </BibleStudentsWrapper>
+          ))}
+        </StudentsContainer>
+      )}
+
+      <h2 style={{ marginTop: "30px" }}>Territories</h2>
+      {territories == [] || territories == null || !territories.length ? (
+        <p>There are no terrritories</p>
+      ) : (
+        <StudentsContainer>
+          {territories.map((ts, i) => (
+            <BibleStudentsWrapper key={i}>
+              <h3>{ts.name}</h3>
+              <p>{ts.location}</p>
+            </BibleStudentsWrapper>
+          ))}
+        </StudentsContainer>
+      )}
     </HomeContainer>
   );
 };
@@ -63,18 +64,20 @@ const StudentsContainer = styled.div`
 `;
 
 const BibleStudentsWrapper = styled.div`
-  /* width: 100%; */
   position: relative;
-  width: 240px;
+  width: 220px;
   height: 200px;
-  border-radius: 7px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+  border-radius: 4px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 1px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  /* padding: 10px; */
-  /* display: inline-block; */
   margin-top: 20px;
   margin-right: 10px;
   cursor: pointer;
   padding: 10px;
+
+  span,
+  h3 {
+    font-weight: bold;
+  }
 `;
 export default Home;

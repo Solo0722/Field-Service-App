@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
-import { Button, Form, Modal, Input, List, DatePicker } from "antd";
+import { Button, Form, Modal, Input, List, DatePicker, message } from "antd";
 import { AppContext } from "../context/GlobalContext";
 import { cookies } from "../utils/data";
+import moment from "moment";
 
 const AddToReport = () => {
   const { monthlyReport, setMonthlyReport, reportHistory, setReportHistory } =
@@ -71,6 +72,7 @@ const AddToReport = () => {
       return_visits: monthlyReport.return_visits + reportData.return_visits,
       bible_studies: monthlyReport.bible_studies + reportData.bible_studies,
     });
+    message.info("Refresh to see updates");
   };
 
   return (
@@ -106,7 +108,6 @@ const AddToReport = () => {
                 <Button type="primary" onClick={() => decrement(r)}>
                   -
                 </Button>
-                {/* <Button>{r.value}</Button> */}
                 <Input type="button" value={r.value} name={r.inputName} />
                 <Button type="primary" onClick={() => increment(r)}>
                   +

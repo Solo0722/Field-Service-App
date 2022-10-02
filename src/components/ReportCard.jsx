@@ -1,23 +1,64 @@
 import { MoreOutlined } from "@ant-design/icons";
-import { Button, List, Dropdown, Menu, Form, Modal, Input } from "antd";
-import React, { useState } from "react";
+import { Button, List, Dropdown, Menu, Input, message } from "antd";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import AddToReport from "./AddToReport";
+import { AppContext } from "../context/GlobalContext";
 
 const ReportCard = ({ report }) => {
   const navigate = useNavigate();
+
+  const { monthlyReport, setMonthlyReport } = useContext(AppContext);
+
+  const deleteGoal = () => {
+    setMonthlyReport({
+      ...monthlyReport,
+      goal: 0,
+    });
+    message.info("Refresh to see updates");
+  };
+
+  const setGoal = (g) => {
+    setMonthlyReport({
+      ...monthlyReport,
+      goal: parseInt(g),
+    });
+    message.info("Refresh to see updates");
+  };
+
+  const goalInput = (
+    <Menu
+      items={[
+        {
+          key: "1",
+          label: (
+            <Input
+              type="number"
+              placeholder={"Enter goal"}
+              onChange={(e) => setGoal(e.target.value)}
+            />
+          ),
+        },
+      ]}
+    />
+  );
 
   const reportMenu = (
     <Menu
       items={[
         {
           key: "1",
-          label: <a rel="noopener noreferrer">Set goal</a>,
+          label: (
+            <Dropdown overlay={goalInput} trigger={"click"}>
+              <a rel="noopener noreferrer">Set goal</a>
+            </Dropdown>
+          ),
         },
         {
           key: "2",
-          label: <a rel="noopener noreferrer">Delete goal</a>,
+          label: <span>Delete goal</span>,
+          onClick: deleteGoal,
         },
       ]}
     />
@@ -61,7 +102,7 @@ const ReportCard = ({ report }) => {
           }}
         >
           <p>Goal</p>
-          {/* Monthly Goal */}
+          <p>{report.goal}</p>
         </List.Item>
         <List.Item
           style={{
@@ -74,7 +115,13 @@ const ReportCard = ({ report }) => {
           }}
         >
           <p>Hours</p>
-          <p>{report.hours}</p>
+          <p
+            style={{
+              color: `${report.hours >= report.goal ? "green" : "red"}`,
+            }}
+          >
+            {report.hours}
+          </p>
         </List.Item>
         <List.Item
           style={{
@@ -149,8 +196,8 @@ const ReportCard = ({ report }) => {
 const ReportCardContainer = styled.div`
   width: 100%;
   min-height: 300px;
-  border-radius: 7px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+  border-radius: 4px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 1px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   /* padding: 10px; */
   display: inline-block;

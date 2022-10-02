@@ -1,6 +1,6 @@
 import { UserOutlined } from "@ant-design/icons";
 import { Button, Form, Input, message } from "antd";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { AppContext } from "../context/GlobalContext";
@@ -9,6 +9,10 @@ const Auth = () => {
   const { publisher, setPublisher } = useContext(AppContext);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    publisher && navigate("/");
+  }, []);
 
   const onFinish = (values) => {
     console.log(values);
@@ -24,9 +28,8 @@ const Auth = () => {
     <AuthContainer>
       <FormWrapper>
         <img src="/daily-tasks.png" width={40} height={40} alt="logo" />
-        <h2>Hey there zealous servant of Jehovah!</h2>
+        <h2>Hey there zealous servant of Jehovah :)</h2>
         <p>Let's help you get started</p>
-        <p>Create a username</p>
         <Form
           name="basic"
           initialValues={{
@@ -76,6 +79,37 @@ const AuthContainer = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  img,
+  h2,
+  p,
+  form {
+    opacity: 0;
+    animation: fadeIn 1s ease-in both;
+  }
+
+  h2 {
+    animation-delay: .5s;
+  }
+
+  p {
+    animation-delay: 1s;
+  }
+
+  form {
+    animation-delay: 1.5s;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 20%, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
 `;
 
 const FormWrapper = styled.div`

@@ -22,7 +22,7 @@ const Drawerbar = () => {
         type="text"
         style={{ display: "flex", justifyContent: "left" }}
         onClick={visible ? onClose : showDrawer}
-        icon={<BiMenu size={30} style={{ color: "#fff" }} />}
+        icon={<BiMenu size={25} style={{ color: "#fff" }} />}
       />
 
       <Drawer

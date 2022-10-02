@@ -27,7 +27,7 @@ const MonthlyOverview = () => {
           }}
         >
           <p>Goal</p>
-          {/* Monthly Goal */}
+          <p>{monthlyReport.goal}</p>
         </List.Item>
         <List.Item
           style={{
@@ -40,7 +40,15 @@ const MonthlyOverview = () => {
           }}
         >
           <p>Hours</p>
-          <p>{monthlyReport.hours}</p>
+          <p
+            style={{
+              color: `${
+                monthlyReport.hours >= monthlyReport.goal ? "green" : "red"
+              }`,
+            }}
+          >
+            {monthlyReport.hours}
+          </p>
         </List.Item>
         <List.Item
           style={{
@@ -114,8 +122,8 @@ const MonthlyOverview = () => {
 
 const ReportCardWrapper = styled.div`
   width: 100%;
-  border-radius: 7px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+  border-radius: 4px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 1px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   /* padding: 10px; */
   display: inline-block;

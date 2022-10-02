@@ -10,8 +10,6 @@ import { List, Button } from "antd";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Cookies } from "react-cookie";
 
-export const cookies = new Cookies();
-
 const Links = [
   {
     name: "Overview",
@@ -24,11 +22,6 @@ const Links = [
     url: "/reports",
   },
   {
-    name: "Ministry Timer",
-    icon: <FcClock />,
-    url: "/ministry-timer",
-  },
-  {
     name: "Bible Students",
     icon: <FcConferenceCall />,
     url: "/bible-students",
@@ -38,6 +31,7 @@ const Links = [
     icon: <FcDepartment />,
     url: "/territories",
   },
+
   {
     name: "Settings",
     icon: <FcSettings />,
@@ -93,10 +87,17 @@ export const months = [
   "December",
 ];
 
-export const sumUp = (arr) => {
-  let sum = 0;
-  for (let i = 0; i < arr.length; i++) {
-    sum += arr[i];
+export const monthEndings = (month) => {
+  if (
+    month == "September" ||
+    month == "April" ||
+    month == "June" ||
+    month == "November"
+  ) {
+    return 30;
+  } else if (month == "February") {
+    return 28;
+  } else {
+    return 31;
   }
-  return sum;
 };

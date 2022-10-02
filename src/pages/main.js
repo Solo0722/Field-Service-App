@@ -3,7 +3,6 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import {
   BibleStudents,
   Home,
-  MinistryTimer,
   Reports,
   Settings,
   Territories,
@@ -31,7 +30,6 @@ const Main = () => {
             <Route path="/*" element={<Home />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/reports" element={<Reports />} />
-            <Route path="/ministry-timer" element={<MinistryTimer />} />
             <Route path="/bible-students" element={<BibleStudents />} />
             <Route path="/territories" element={<Territories />} />
           </Routes>
