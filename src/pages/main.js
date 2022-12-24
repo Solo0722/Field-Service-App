@@ -1,25 +1,11 @@
-import React, { useContext, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import {
-  BibleStudents,
-  Home,
-  Reports,
-  Settings,
-  Territories,
-} from "../routes";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { BibleStudents, Home, Reports, Settings, Territories } from "../routes";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar";
-import { AppContext } from "../context/GlobalContext";
 
 const Main = () => {
-  const { publisher } = useContext(AppContext);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    publisher == null && navigate("/auth");
-  }, [navigate, publisher]);
-
   return (
     <>
       <Navbar />
