@@ -16,7 +16,7 @@ const Reports = () => {
           <ReportCard report={report} key={i} />
         ))}
       </Wrapper>
-      {reportHistory && (
+      {reportHistory.length !== 0 && (
         <HistoryWrapper>
           <List>
             {reportHistory.map((rh, i) => (
@@ -63,8 +63,8 @@ const HistoryWrapper = styled.div`
   width: 100%;
   position: relative;
   border-radius: 4px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 1px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   margin-top: 20px;
   padding: 10px;
 `;

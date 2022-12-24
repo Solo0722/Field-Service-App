@@ -7,7 +7,7 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
-    "antd": "^4.22.7",
+    "antd": "^4.24.5",
     "axios": "^0.25.0",
     "customize-cra": "^1.0.0",
     "hamburger-react": "^2.5.0",

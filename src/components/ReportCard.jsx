@@ -1,5 +1,13 @@
 import { MoreOutlined } from "@ant-design/icons";
-import { Button, List, Dropdown, Menu, Input, message } from "antd";
+import {
+  Button,
+  List,
+  Dropdown,
+  Menu,
+  Input,
+  InputNumber,
+  message,
+} from "antd";
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
@@ -27,7 +35,7 @@ const ReportCard = ({ report }) => {
     message.info("Refresh to see updates");
   };
 
-  const goalInput = (
+  const reportMenu = (
     <Menu
       items={[
         {
@@ -38,21 +46,6 @@ const ReportCard = ({ report }) => {
               placeholder={"Enter goal"}
               onChange={(e) => setGoal(e.target.value)}
             />
-          ),
-        },
-      ]}
-    />
-  );
-
-  const reportMenu = (
-    <Menu
-      items={[
-        {
-          key: "1",
-          label: (
-            <Dropdown overlay={goalInput} trigger={"click"}>
-              <a rel="noopener noreferrer">Set goal</a>
-            </Dropdown>
           ),
         },
         {
@@ -78,17 +71,6 @@ const ReportCard = ({ report }) => {
         <h3>
           {report.month} {report.year}
         </h3>
-        <Dropdown trigger="click" overlay={reportMenu}>
-          <Button
-            icon={<MoreOutlined />}
-            type={"text"}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-end",
-            }}
-          />
-        </Dropdown>
       </div>
       <List>
         <List.Item
@@ -102,7 +84,12 @@ const ReportCard = ({ report }) => {
           }}
         >
           <p>Goal</p>
-          <p>{report.goal}</p>
+          {/* <p>{report.goal}</p> */}
+          <InputNumber
+            placeholder={"Enter goal"}
+            onChange={(e) => setGoal(e)}
+            value={report.goal}
+          />
         </List.Item>
         <List.Item
           style={{
@@ -197,8 +184,8 @@ const ReportCardContainer = styled.div`
   width: 100%;
   min-height: 300px;
   border-radius: 4px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 1px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   /* padding: 10px; */
   display: inline-block;
   cursor: pointer;

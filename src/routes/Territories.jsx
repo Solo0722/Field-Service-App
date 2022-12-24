@@ -2,9 +2,8 @@ import { Button, Dropdown, Empty, Form, Input, Modal, Menu } from "antd";
 import moment from "moment";
 import { useContext, useState } from "react";
 import styled from "styled-components";
-import { MoreOutlined } from "@ant-design/icons";
+import { MoreOutlined, PlusCircleFilled } from "@ant-design/icons";
 import { AppContext } from "../context/GlobalContext";
-import { BiPlus } from "react-icons/bi";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 
@@ -68,9 +67,8 @@ const Territories = () => {
       <nav>
         <h2>Territories</h2>
         <Button
-          type="primary"
-          style={{ background: "#00bb", borderColor: "#00bb" }}
-          icon={<BiPlus size={25} />}
+          type="text"
+          icon={<PlusCircleFilled size={25} />}
           onClick={showModal}
         />
       </nav>
@@ -217,8 +215,8 @@ const BsCard = styled.div`
   width: 100%;
   min-height: 200px;
   border-radius: 4px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 1px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   margin-top: 20px;
   /* margin-right: 10px; */
   cursor: pointer;

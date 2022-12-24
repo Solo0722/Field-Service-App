@@ -10,7 +10,7 @@ const AddToReport = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const [reportData, setReportData] = useState({
-    date: null,
+    date: new Date(),
     hours: 0,
     placements: 0,
     videos: 0,
@@ -117,7 +117,10 @@ const AddToReport = () => {
           ))}
           <List.Item>
             <p>Date</p>
-            <DatePicker onChange={handleDateChange} />
+            <DatePicker
+              onChange={handleDateChange}
+              defaultValue={moment(new Date())}
+            />
           </List.Item>
         </List>
       </Modal>

@@ -1,15 +1,16 @@
 import React, { createContext, useState } from "react";
 import { useEffect } from "react";
-import { months, monthEndings } from "../utils/data";
+import { months } from "../utils/data";
 import { useLocalStorage } from "../utils/hooks";
+import moment from "moment";
 
 export const AppContext = createContext();
 
 const GlobalContext = ({ children }) => {
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = months[date.getMonth()];
+  const year = moment().format("YYYY");
+  const month = moment().format("MMMM");
   const [publisher, setPublisher] = useLocalStorage("publisher", null);
+  console.log(moment())
 
   const [monthlyReport, setMonthlyReport] = useLocalStorage("monthlyReport", {
     month,
@@ -41,7 +42,7 @@ const GlobalContext = ({ children }) => {
   const [yearlyReport, setYearlyReport] = useState([monthlyReport]);
 
   useEffect(() => {
-    if (date.getDate() == monthEndings(month) && date.getHours() == 23) {
+    if (moment().endOf("month").date() === moment(new Date()).date()) {
       setReportsKeeper([...reportsKeeper, monthlyReport]);
       setMonthlyReport({
         month,
