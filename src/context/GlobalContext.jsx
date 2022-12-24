@@ -9,7 +9,7 @@ const GlobalContext = ({ children }) => {
   const year = moment().format("YYYY");
   const month = moment().format("MMMM");
   const [publisher, setPublisher] = useLocalStorage("publisher", null);
-  console.log(moment())
+  console.log(moment());
 
   const [monthlyReport, setMonthlyReport] = useLocalStorage("monthlyReport", {
     month,
@@ -54,24 +54,14 @@ const GlobalContext = ({ children }) => {
         bible_studies: 0,
       });
     }
-  }, [month, monthlyReport, reportsKeeper, setMonthlyReport, setReportsKeeper, year]);
-
-  useEffect(() => {
-    !publisher &&
-      setMonthlyReport({
-        month,
-        year,
-        goal: 0,
-        hours: 0,
-        placements: 0,
-        videos: 0,
-        return_visits: 0,
-        bible_studies: 0,
-      });
-    !publisher && setReportHistory([]);
-    !publisher && setBibleStudents([]);
-    !publisher && setTerritories([]);
-  }, [month, publisher, setBibleStudents, setMonthlyReport, setReportHistory, setTerritories, year]);
+  }, [
+    month,
+    monthlyReport,
+    reportsKeeper,
+    setMonthlyReport,
+    setReportsKeeper,
+    year,
+  ]);
 
   return (
     <AppContext.Provider
