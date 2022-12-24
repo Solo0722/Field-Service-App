@@ -12,7 +12,7 @@ const Auth = () => {
 
   useEffect(() => {
     publisher && navigate("/");
-  }, []);
+  }, [navigate, publisher]);
 
   const onFinish = (values) => {
     console.log(values);

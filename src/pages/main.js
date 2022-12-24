@@ -18,7 +18,7 @@ const Main = () => {
 
   useEffect(() => {
     publisher == null && navigate("/auth");
-  }, [publisher]);
+  }, [navigate, publisher]);
 
   return (
     <>

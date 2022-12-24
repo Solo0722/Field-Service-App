@@ -54,7 +54,7 @@ const GlobalContext = ({ children }) => {
         bible_studies: 0,
       });
     }
-  }, [monthlyReport]);
+  }, [month, monthlyReport, reportsKeeper, setMonthlyReport, setReportsKeeper, year]);
 
   useEffect(() => {
     !publisher &&
@@ -71,7 +71,7 @@ const GlobalContext = ({ children }) => {
     !publisher && setReportHistory([]);
     !publisher && setBibleStudents([]);
     !publisher && setTerritories([]);
-  }, [publisher]);
+  }, [month, publisher, setBibleStudents, setMonthlyReport, setReportHistory, setTerritories, year]);
 
   return (
     <AppContext.Provider
