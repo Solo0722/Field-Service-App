@@ -1,4 +1,4 @@
-import { Divider, List } from "antd";
+import { List } from "antd";
 import moment from "moment/moment";
 import { useContext } from "react";
 import styled from "styled-components";

@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import {} from "react-icons/fc";
 import { AppContext } from "../context/GlobalContext";
 
 const Greetings = () => {
-  const { publisher, setPublisher } = useContext(AppContext);
+  const { publisher } = useContext(AppContext);
 
   let myDate = new Date();
   let hrs = myDate.getHours();
@@ -18,12 +17,12 @@ const Greetings = () => {
   return (
     <GreetingsWrapper>
       <div>
-        {greet == "Good Evening" ? (
-          <img src="/half-moon.png" width={25} height={25} />
-        ) : greet == "Good Afternoon" ? (
-          <img src="/sun.png" width={25} height={25} />
+        {greet === "Good Evening" ? (
+          <img src="/half-moon.png" width={25} height={25} alt="time" />
+        ) : greet === "Good Afternoon" ? (
+          <img src="/sun.png" width={25} height={25} alt="time" />
         ) : (
-          <img src="/morning.png" width={25} height={25} />
+          <img src="/morning.png" width={25} height={25} alt="time" />
         )}
         &nbsp;
       </div>

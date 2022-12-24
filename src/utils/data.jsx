@@ -1,14 +1,12 @@
 import {
   FcHome,
   FcPlanner,
-  FcClock,
   FcConferenceCall,
   FcDepartment,
   FcSettings,
 } from "react-icons/fc";
 import { List, Button } from "antd";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Cookies } from "react-cookie";
 
 const Links = [
   {
@@ -60,7 +58,7 @@ export const RenderLinks = ({ onClose }) => {
               justifyContent: "left",
               padding: "30px 10px",
               background: `${
-                location.pathname == link.url ? "rgba(0,0,0,0.05)" : ""
+                location.pathname === link.url ? "rgba(0,0,0,0.05)" : ""
               }`,
             }}
           >
@@ -86,18 +84,3 @@ export const months = [
   "November",
   "December",
 ];
-
-export const monthEndings = (month) => {
-  if (
-    month == "September" ||
-    month == "April" ||
-    month == "June" ||
-    month == "November"
-  ) {
-    return 30;
-  } else if (month == "February") {
-    return 28;
-  } else {
-    return 31;
-  }
-};

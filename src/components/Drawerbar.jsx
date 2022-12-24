@@ -3,7 +3,6 @@ import { useState } from "react";
 import styled from "styled-components";
 import { BiMenu } from "react-icons/bi";
 import { RenderLinks } from "../utils/data";
-import { Spin } from "hamburger-react";
 
 const Drawerbar = () => {
   const [visible, setVisible] = useState(false);

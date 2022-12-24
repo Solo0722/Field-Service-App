@@ -12,7 +12,9 @@ const Home = () => {
       <Greetings />
       <MonthlyOverview />
       <h2>Bible Students</h2>
-      {bibleStudents == [] || bibleStudents == null || !bibleStudents.length ? (
+      {bibleStudents === [] ||
+      bibleStudents == null ||
+      !bibleStudents.length ? (
         <p>There are no bible students</p>
       ) : (
         <StudentsContainer>
@@ -31,7 +33,7 @@ const Home = () => {
       )}
 
       <h2 style={{ marginTop: "30px" }}>Territories</h2>
-      {territories == [] || territories == null || !territories.length ? (
+      {territories === [] || territories == null || !territories.length ? (
         <p>There are no terrritories</p>
       ) : (
         <StudentsContainer>

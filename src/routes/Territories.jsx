@@ -5,12 +5,9 @@ import styled from "styled-components";
 import { MoreOutlined, PlusCircleFilled } from "@ant-design/icons";
 import { AppContext } from "../context/GlobalContext";
 import { v4 as uuidv4 } from "uuid";
-import { useNavigate } from "react-router-dom";
 
 const Territories = () => {
   const { territories, setTerritories } = useContext(AppContext);
-
-  const navigate = useNavigate();
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -47,15 +44,12 @@ const Territories = () => {
         items={[
           {
             key: "1",
-            label: <a rel="noopener noreferrer">Edit</a>,
+            label: "Edit",
           },
           {
             key: "2",
-            label: (
-              <a rel="noopener noreferrer" onClick={() => deleteTerritory(id)}>
-                Delete
-              </a>
-            ),
+            label: "Delete",
+            onClick: deleteTerritory(id),
           },
         ]}
       />
@@ -72,7 +66,7 @@ const Territories = () => {
           onClick={showModal}
         />
       </nav>
-      {territories.length == 0 ? (
+      {territories.length === 0 ? (
         <div
           style={{
             width: "100%",

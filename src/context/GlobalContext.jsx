@@ -1,6 +1,5 @@
 import React, { createContext, useState } from "react";
 import { useEffect } from "react";
-import { months } from "../utils/data";
 import { useLocalStorage } from "../utils/hooks";
 import moment from "moment";
 

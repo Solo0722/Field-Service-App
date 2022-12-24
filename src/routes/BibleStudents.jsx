@@ -14,14 +14,11 @@ import styled from "styled-components";
 import { MoreOutlined, PlusCircleFilled } from "@ant-design/icons";
 import { AppContext } from "../context/GlobalContext";
 import { v4 as uuidv4 } from "uuid";
-import { useNavigate } from "react-router-dom";
 
 const { Option } = Select;
 
 const BibleStudents = () => {
   const { bibleStudents, setBibleStudents } = useContext(AppContext);
-
-  const navigate = useNavigate();
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -52,26 +49,18 @@ const BibleStudents = () => {
     setBibleStudents(updStudents);
   };
 
-  const editBibleStudent = () => {};
-
   const studentMenu = (id) => {
     return (
       <Menu
         items={[
           {
             key: "1",
-            label: <a rel="noopener noreferrer">Edit</a>,
+            label: "Edit",
           },
           {
             key: "2",
-            label: (
-              <a
-                rel="noopener noreferrer"
-                onClick={() => deleteBibleStudent(id)}
-              >
-                Delete
-              </a>
-            ),
+            label: "Delete",
+            onClick: deleteBibleStudent(id),
           },
         ]}
       />
@@ -88,7 +77,7 @@ const BibleStudents = () => {
           onClick={showModal}
         />
       </nav>
-      {bibleStudents.length == 0 ? (
+      {bibleStudents.length === 0 ? (
         <div
           style={{
             width: "100%",

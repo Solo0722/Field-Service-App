@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
-import { Button, Form, Modal, Input, List, DatePicker, message } from "antd";
+import { Button, Modal, Input, List, DatePicker, message } from "antd";
 import { AppContext } from "../context/GlobalContext";
-import { cookies } from "../utils/data";
 import moment from "moment";
 
 const AddToReport = () => {

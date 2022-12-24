@@ -1,31 +1,11 @@
-import { MoreOutlined } from "@ant-design/icons";
-import {
-  Button,
-  List,
-  Dropdown,
-  Menu,
-  Input,
-  InputNumber,
-  message,
-} from "antd";
-import React, { useState, useContext } from "react";
+import { Button, List, InputNumber, message } from "antd";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import AddToReport from "./AddToReport";
 import { AppContext } from "../context/GlobalContext";
 
 const ReportCard = ({ report }) => {
-  const navigate = useNavigate();
-
   const { monthlyReport, setMonthlyReport } = useContext(AppContext);
-
-  const deleteGoal = () => {
-    setMonthlyReport({
-      ...monthlyReport,
-      goal: 0,
-    });
-    message.info("Refresh to see updates");
-  };
 
   const setGoal = (g) => {
     setMonthlyReport({
@@ -34,28 +14,6 @@ const ReportCard = ({ report }) => {
     });
     message.info("Refresh to see updates");
   };
-
-  const reportMenu = (
-    <Menu
-      items={[
-        {
-          key: "1",
-          label: (
-            <Input
-              type="number"
-              placeholder={"Enter goal"}
-              onChange={(e) => setGoal(e.target.value)}
-            />
-          ),
-        },
-        {
-          key: "2",
-          label: <span>Delete goal</span>,
-          onClick: deleteGoal,
-        },
-      ]}
-    />
-  );
 
   return (
     <ReportCardContainer>

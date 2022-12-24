@@ -1,5 +1,5 @@
 import { UserOutlined } from "@ant-design/icons";
-import { Button, Form, Input, message } from "antd";
+import { Button, Form, Input } from "antd";
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -89,7 +89,7 @@ const AuthContainer = styled.div`
   }
 
   h2 {
-    animation-delay: .5s;
+    animation-delay: 0.5s;
   }
 
   p {
