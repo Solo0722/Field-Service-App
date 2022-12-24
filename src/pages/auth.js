@@ -44,7 +44,6 @@ const Auth = () => {
             name="publisher"
             rules={[
               {
-                required: true,
                 message: "Please input your username!",
               },
             ]}
