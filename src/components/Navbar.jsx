@@ -6,8 +6,10 @@ const Navbar = () => {
   return (
     <NavWrapper>
       <Drawerbar />
-      <img src="/daily-tasks.png" width={30} height={30} alt="logo" />
-      <span>Ministry Assistant</span>
+      <div>
+        <img src="/daily-tasks.png" width={30} height={30} alt="logo" />
+        <span>Ministry Assistant</span>
+      </div>
     </NavWrapper>
   );
 };
@@ -22,10 +24,16 @@ const NavWrapper = styled.nav`
   padding: 0px 1rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   position: fixed;
   top: 0;
   z-index: 100;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   h3 {
     color: #fff;
