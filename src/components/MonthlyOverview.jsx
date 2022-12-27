@@ -128,7 +128,7 @@ const ReportCardWrapper = styled.div`
   /* padding: 10px; */
   display: inline-block;
   cursor: pointer;
-  margin: 30px 0;
+  margin-bottom: 20px;
 
   h2,
   h3 {

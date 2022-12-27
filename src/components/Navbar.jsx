@@ -1,25 +1,13 @@
-import { UserOutlined } from "@ant-design/icons";
-import { Avatar } from "antd";
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
-import { AppContext } from "../context/GlobalContext";
 import Drawerbar from "./Drawerbar";
 
 const Navbar = () => {
-  const { publisher } = useContext(AppContext);
-
   return (
     <NavWrapper>
-        <Drawerbar />
-        <img src="/daily-tasks.png" width={30} height={30} alt="logo" />
-      <ToolsContainer>
-        <Avatar
-          children={publisher?.slice(0, 1)}
-          alt={<UserOutlined />}
-          style={{ background: "#fff", color: "#000" }}
-          size="small"
-        />
-      </ToolsContainer>
+      <Drawerbar />
+      <img src="/daily-tasks.png" width={30} height={30} alt="logo" />
+      <span>Ministry Assistant</span>
     </NavWrapper>
   );
 };
@@ -34,7 +22,7 @@ const NavWrapper = styled.nav`
   padding: 0px 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   position: fixed;
   top: 0;
   z-index: 100;
@@ -43,8 +31,11 @@ const NavWrapper = styled.nav`
     color: #fff;
     font-weight: bolder;
   }
+
+  span {
+    color: #fff;
+    margin-left: 7px;
+    font-weight: bold;
+  }
 `;
-
-const ToolsContainer = styled.div``;
-
 export default Navbar;

@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import MonthlyOverview from "../components/MonthlyOverview";
-import Greetings from "../components/Greetings";
 import { AppContext } from "../context/GlobalContext";
 
 const Home = () => {
@@ -9,7 +8,6 @@ const Home = () => {
 
   return (
     <HomeContainer>
-      <Greetings />
       <MonthlyOverview />
       <h2>Bible Students</h2>
       {bibleStudents === [] ||

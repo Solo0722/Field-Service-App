@@ -29,12 +29,6 @@ const Links = [
     icon: <FcDepartment />,
     url: "/territories",
   },
-
-  {
-    name: "Settings",
-    icon: <FcSettings />,
-    url: "/settings",
-  },
 ];
 
 export const RenderLinks = ({ onClose }) => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { BibleStudents, Home, Reports, Settings, Territories } from "../routes";
+import { BibleStudents, Home, Reports,  Territories } from "../routes";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar";
@@ -14,7 +14,6 @@ const Main = () => {
         <RoutesWrapper>
           <Routes>
             <Route path="/*" element={<Home />} />
-            <Route path="/settings" element={<Settings />} />
             <Route path="/reports" element={<Reports />} />
             <Route path="/bible-students" element={<BibleStudents />} />
             <Route path="/territories" element={<Territories />} />
