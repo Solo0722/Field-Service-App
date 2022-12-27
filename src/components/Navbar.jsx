@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <NavWrapper>
       <Drawerbar />
-      <div>
+      <div className="logo-wrapper">
         <img src="/daily-tasks.png" width={30} height={30} alt="logo" />
         <span>Ministry Assistant</span>
       </div>
@@ -29,7 +29,7 @@ const NavWrapper = styled.nav`
   top: 0;
   z-index: 100;
 
-  div {
+  .logo-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
