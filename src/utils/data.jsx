@@ -3,7 +3,6 @@ import {
   FcPlanner,
   FcConferenceCall,
   FcDepartment,
-  FcSettings,
 } from "react-icons/fc";
 import { List, Button } from "antd";
 import { useNavigate, useLocation } from "react-router-dom";
