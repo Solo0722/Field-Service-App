@@ -6,8 +6,8 @@ import moment from "moment";
 export const AppContext = createContext();
 
 const GlobalContext = ({ children }) => {
-  const year = moment().format("YYYY");
-  const month = moment().format("MMMM");
+  let year = moment().format("YYYY");
+  let month = moment().format("MMMM");
   const [publisher, setPublisher] = useLocalStorage("publisher", null);
   console.log(moment());
 
@@ -41,7 +41,12 @@ const GlobalContext = ({ children }) => {
   const [yearlyReport, setYearlyReport] = useState([monthlyReport]);
 
   useEffect(() => {
-    if (moment().endOf("month").date() === moment(new Date()).date()) {
+    if (
+      moment().endOf("month").date() === moment(new Date()).date() &&
+      new Date().getHours === 23
+    ) {
+      year = moment(new Date()).format("YYYY");
+      month = moment(new Date()).format("MMMM");
       setReportsKeeper([...reportsKeeper, monthlyReport]);
       setMonthlyReport({
         month,
